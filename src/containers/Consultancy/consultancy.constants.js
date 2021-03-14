@@ -1,0 +1,15 @@
+export const GET_CONSULTANCIES_REQUEST = 'consultancy/GET_CONSULTANCIES_REQUEST';
+export const GET_CONSULTANCIES_SUCCESS = 'consultancy/GET_CONSULTANCIES_SUCCESS';
+export const GET_CONSULTANCIES_FAILURE = 'consultancy/GET_CONSULTANCIES_FAILURE';
+
+export const POST_CONSULTANCIES_REQUEST = 'consultancy/POST_CONSULTANCIES_REQUEST';
+export const POST_CONSULTANCIES_SUCCESS = 'consultancy/POST_CONSULTANCIES_SUCCESS';
+export const POST_CONSULTANCIES_FAILURE = 'consultancy/POST_CONSULTANCIES_FAILURE';
+
+export const HANDLE_MODAL_SHOW = 'consultancy/HANDLE_MODAL_SHOW';
+export const HANDLE_MODAL_CANCEL = 'consultancy/HANDLE_MODAL_CANCEL';
+
+export const ON_CHANGE_TITLE = 'consultancy/ON_CHANGE_TITLE';
+export const ON_CHANGE_TEXT = 'consultancy/ON_CHANGE_TEXT';
+export const ON_CHANGE_ADD_PHOTO = 'consultancy/ON_CHANGE_ADD_PHOTO';
+export const ON_CHANGE_DEL_PHOTO = 'consultancy/ON_CHANGE_DEL_PHOTO';
