@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -9,10 +9,15 @@ import { Layout, Icon, Menu } from 'antd';
 import mainRoutes from 'routes/mainRoutes';
 import { makeSelectUser } from 'global.selectors';
 
-/* eslint-disable indent */
 function Sider(props) {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const onCollapse = collapsed => {
+    setCollapsed(collapsed);
+  };
+
   return (
-    <Layout.Sider>
+    <Layout.Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
       <Menu theme="dark" selectedKeys={[props.location.pathname]} mode="inline">
         {mainRoutes.map(route =>
           !route.auth ||

@@ -8,16 +8,16 @@ import {
   POST_CONSULTANCIES_FAILURE,
   ON_CHANGE_TEXT,
   ON_CHANGE_TITLE,
+  DELETE_CONSULTANCY_REQUEST,
 } from './consultancy.constants';
 
 export const initialState = {
-  consultanciesList: [],
+  consultancyList: [],
   modalVisible: false,
   modalLoading: false,
-  consultanciesForm: {
+  consultancyForm: {
     title: '',
     text: '',
-    photo: [],
   },
 };
 
@@ -25,7 +25,7 @@ const consultancyReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case GET_CONSULTANCIES_SUCCESS:
-        draft.consultanciesList = action.payload.data;
+        draft.consultancyList = action.payload.data;
         break;
       case POST_CONSULTANCIES_REQUEST:
         draft.modalLoading = true;
@@ -33,7 +33,7 @@ const consultancyReducer = (state = initialState, action) =>
       case POST_CONSULTANCIES_SUCCESS:
         draft.modalLoading = false;
         draft.modalVisible = false;
-        draft.consultanciesForm = {
+        draft.consultancyForm = {
           title: '',
           text: '',
           // photo: [],
@@ -41,6 +41,9 @@ const consultancyReducer = (state = initialState, action) =>
         break;
       case POST_CONSULTANCIES_FAILURE:
         draft.modalLoading = false;
+        break;
+      case DELETE_CONSULTANCY_REQUEST:
+        draft.modalVisible = false;
         break;
       case HANDLE_MODAL_SHOW:
         draft.modalVisible = true;
@@ -50,10 +53,10 @@ const consultancyReducer = (state = initialState, action) =>
         draft.modalVisible = false;
         break;
       case ON_CHANGE_TITLE:
-        draft.consultanciesForm.title = action.payload;
+        draft.consultancyForm.title = action.payload;
         break;
       case ON_CHANGE_TEXT:
-        draft.consultanciesForm.text = action.payload;
+        draft.consultancyForm.text = action.payload;
         break;
       // case ON_CHANGE_ADD_PHOTO:
       //   draft.consultanciesForm.photo = [action.payload];

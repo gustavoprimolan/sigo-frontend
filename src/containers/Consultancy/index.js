@@ -31,7 +31,7 @@ function Consultancy(props) {
         <title>Consultorias e Assessorias</title>
         <meta name="description" content="Consultorias e Assessorias" />
       </Helmet>
-      {/* <WriteConsultancyModal /> */}
+      <WriteConsultancyModal />
       <div style={{ marginBottom: 16 }}>
         <Button type="primary" onClick={props.handleModalShow}>
           Write
