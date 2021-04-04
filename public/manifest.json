@@ -1,6 +1,6 @@
 {
-  "short_name": "SIGO",
-  "name": "Sistema Integrado de Gestão e Operação",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
