@@ -16,13 +16,13 @@ export default class Header extends Component {
 
     handleClickLogout(){
         localStorage.removeItem('token');
-        localStorage.setItem('isLoggedIn', false);
+        localStorage.setItem("isLoggedIn", false);
         this.setState({ toDashboard: true });
     }
 
     render() {
-        if (this.state.toDashboard === true) {
-            return <Redirect to='/' />
+        if (localStorage.getItem("isLoggedIn") == 'false') {
+            return <Redirect to='/sigo-frontend' />
         }
         return (
             <nav className="navbar navbar-expand navbar-dark bg-dark static-top">

@@ -59,13 +59,18 @@ export default class Login extends Component {
     }
 
     renderRedirect = () => {
+        console.log(this.state.redirect);
         if (this.state.redirect) {
+            console.log('redirecionou');
             return <Redirect to='/dashboard'/>
         }
     };
 
     render() {
         const isLoading = this.state.isLoading;
+        if (localStorage.getItem("isLoggedIn") == 'true') {
+            return <Redirect to='/dashboard' />
+        }
         return (
             <div className="container">
                 <TitleComponent title="SIGO"></TitleComponent>

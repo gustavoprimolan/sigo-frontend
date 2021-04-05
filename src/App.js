@@ -22,9 +22,9 @@ class App extends Component {
             <div className="App">
                 <Router>
                     <Switch>
-                        <Route exact path='/' component={Login} />
+                        <Route exact path='/sigo-frontend' component={Login} />
                         <Route path='/dashboard' component={Dashboard} />
-                        <Route path='/index' component={Index}/>
+                        {/* <Route path='/index' component={Index}/> */}
                         {/* <Route path='/register' component={Register} /> */}
                         <Route path='/add' component={AddPage} />
                         <Route path='/consultancy' component={Consultancy} />
