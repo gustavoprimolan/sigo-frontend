@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/sigo-frontend/static/css/main.bb3cb2ac.chunk.css",
+    "main.js": "/sigo-frontend/static/js/main.9712cdee.chunk.js",
+    "main.js.map": "/sigo-frontend/static/js/main.9712cdee.chunk.js.map",
+    "runtime-main.js": "/sigo-frontend/static/js/runtime-main.bdd67d9d.js",
+    "runtime-main.js.map": "/sigo-frontend/static/js/runtime-main.bdd67d9d.js.map",
+    "static/js/2.16420857.chunk.js": "/sigo-frontend/static/js/2.16420857.chunk.js",
+    "static/js/2.16420857.chunk.js.map": "/sigo-frontend/static/js/2.16420857.chunk.js.map",
+    "index.html": "/sigo-frontend/index.html",
+    "precache-manifest.9b72929bb7e1ea9f878ba6b3053cf653.js": "/sigo-frontend/precache-manifest.9b72929bb7e1ea9f878ba6b3053cf653.js",
+    "service-worker.js": "/sigo-frontend/service-worker.js",
+    "static/css/main.bb3cb2ac.chunk.css.map": "/sigo-frontend/static/css/main.bb3cb2ac.chunk.css.map",
+    "static/js/2.16420857.chunk.js.LICENSE.txt": "/sigo-frontend/static/js/2.16420857.chunk.js.LICENSE.txt",
+    "static/media/all.min.css": "/sigo-frontend/static/media/fa-solid-900.f14c3b2f.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bdd67d9d.js",
+    "static/js/2.16420857.chunk.js",
+    "static/css/main.bb3cb2ac.chunk.css",
+    "static/js/main.9712cdee.chunk.js"
+  ]
+}
