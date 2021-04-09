@@ -15,6 +15,7 @@ export const getConsultancies = async () => {
 }
 
 export const getConsultancy = async (id) => {
+  console.log(`${url}/${id}`);
   const response = await axios.get(`${url}/${id}` , { headers: { token: localStorage.getItem('token')}})
   .then(response => {
     return response.data;
@@ -22,8 +23,8 @@ export const getConsultancy = async (id) => {
   .catch(error => {
     console.log(error);
   });
-
-  return response ? response : [];
+  console.log(response);
+  return response;
 }
 
 export const postConsultancy = async (consultancy) => {

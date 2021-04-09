@@ -16,6 +16,7 @@ export const getStandards = async () => {
 }
 
 export const getStandard = async (id) => {
+  console.log(`${url}/${id}`);
   const response = await axios.get(`${url}/${id}` , { headers: { token: localStorage.getItem('token')}})
   .then(response => {
     return response.data;

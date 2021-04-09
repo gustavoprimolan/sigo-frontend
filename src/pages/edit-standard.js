@@ -19,7 +19,7 @@ export default class EditStandard extends Component {
   };
 
   async componentDidMount() {
-    const id = this.props.location.search[4];
+    const id = this.props.location.search.split("=")[1];
     this.standard = await getStandard(id);
     console.log(this.standard)
     document.getElementById("inputFile").value = this.standard.file;

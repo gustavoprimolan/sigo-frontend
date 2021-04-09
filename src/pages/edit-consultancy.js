@@ -19,7 +19,7 @@ export default class EditConsultancy extends Component {
   };
 
   async componentDidMount() {
-    const id = this.props.location.search[4];
+    const id = this.props.location.search.split("=")[1];
     this.consultancy = await getConsultancy(id);
     document.getElementById("inputDepartment").value = this.consultancy.department;
     document.getElementById("inputSector").value = this.consultancy.sector;
