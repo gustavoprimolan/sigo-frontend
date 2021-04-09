@@ -27,6 +27,7 @@ export default class AddStandard extends Component {
     const releaseDate = document.getElementById("inputReleaseDate").value;
     const validStartDate = document.getElementById("inputValidStartDate").value;
     const description = document.getElementById("inputDescription").value;
+    const valid = document.getElementById("inputValid").value == 'true' ? true : false;
 
     const standard = {
       file,
@@ -38,6 +39,7 @@ export default class AddStandard extends Component {
       releaseDate,
       validStartDate,
       description,
+      valid
     };
 
     const created = postStandard(standard);
@@ -69,13 +71,13 @@ export default class AddStandard extends Component {
                   <Link to={"/consultancy"}>Dashboard</Link>
                 </li>
                 <li className="breadcrumb-item active">
-                  Adicionar Consultoria
+                  Adicionar Norma
                 </li>
               </ol>
             </div>
             <div className="container-fluid">
               <div className="card mx-auto">
-                <div className="card-header">Adicionar Consultoria</div>
+                <div className="card-header">Adicionar Norma</div>
                 <div className="card-body">
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -119,7 +121,7 @@ export default class AddStandard extends Component {
                               required="required"
                             />
                             <label htmlFor="inputOrganization">
-                              Organização da Norma
+                              Organização criadora da Norma
                             </label>
                           </div>
                         </div>
@@ -170,31 +172,33 @@ export default class AddStandard extends Component {
                     <div className="form-group">
                       <div className="form-row">
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputReleaseDate"
-                              className="form-control"
-                              placeholder="Entre com a data de publicação"
-                              required="required"
-                            />
-                            <label htmlFor="inputReleaseDate">
-                              Data de Pubilicação
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputReleaseDate" className="col-6 col-form-label">Data de Publicação</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputReleaseDate" required="required" />
+                            </div>
                           </div>
                         </div>
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputValidStartDate"
-                              className="form-control"
-                              placeholder="Entre a data de início de validade"
-                              required="required"
-                            />
-                            <label htmlFor="inputValidStartDate">
-                              Data de Início de Validade
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputValidStartDate" className="col-6 col-form-label">Data de Início de Validade</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputValidStartDate" required="required" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <label htmlFor="inputValid">Valida</label>
+                            <select id="inputValid" className="form-control">
+                              <option value="true">Sim</option>
+                              <option value="false">Não</option>
+                            </select>
                           </div>
                         </div>
                       </div>

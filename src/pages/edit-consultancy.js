@@ -3,13 +3,12 @@ import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import Header from "../elements/header";
 import Sidebar from "../elements/sidebar";
-import { getConsultancies, putConsultancy } from "../api/consultancy-api";
+import { getConsultancies, getConsultancy, putConsultancy } from "../api/consultancy-api";
 import Footer from "../elements/footer";
 
 export default class EditConsultancy extends Component {
   constructor(props) {
     super(props);
-    // this.url = 'http://localhost:8080/consultancies';
     this.consultancy = {};
   }
 
@@ -19,9 +18,9 @@ export default class EditConsultancy extends Component {
     isLoading: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const id = this.props.location.search[4];
-    this.consultancy = getConsultancies()[id - 1];
+    this.consultancy = await getConsultancy(id);
     document.getElementById("inputDepartment").value = this.consultancy.department;
     document.getElementById("inputSector").value = this.consultancy.sector;
     document.getElementById("inputCompany").value = this.consultancy.company;
@@ -34,7 +33,7 @@ export default class EditConsultancy extends Component {
 
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     this.setState({ isLoading: true });
     const department = document.getElementById("inputDepartment").value;
@@ -49,7 +48,7 @@ export default class EditConsultancy extends Component {
     
     this.consultancy = {...this.consultancy, department, sector, company, cnpj, hiringDate, startDate, endDate, situation, active};
 
-    const updated = putConsultancy(this.consultancy);
+    const updated = await putConsultancy(this.consultancy);
     if (updated) {
       this.setState({ redirect: true, isLoading: false });
     }
@@ -153,31 +152,19 @@ export default class EditConsultancy extends Component {
                     <div className="form-group">
                       <div className="form-row">
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputHiringDate"
-                              className="form-control"
-                              placeholder="Enter Hiring Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputHiringDate">
-                              Data de Contratação
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputHiringDate" className="col-6 col-form-label">Data de Contratação</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputHiringDate" required="required" />
+                            </div>
                           </div>
                         </div>
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputStartDate"
-                              className="form-control"
-                              placeholder="Enter Start Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputStartDate">
-                              Data de Início
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputStartDate" className="col-6 col-form-label">Data de Início</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputStartDate" required="required" />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -185,15 +172,11 @@ export default class EditConsultancy extends Component {
                     <div className="form-group">
                       <div className="form-row">
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputEndDate"
-                              className="form-control"
-                              placeholder="Enter End Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputEndDate">Data de Fim</label>
+                          <div className="form-group row">
+                            <label htmlFor="inputEndDate" className="col-6 col-form-label">Data de Fim</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputEndDate" required="required" />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -217,7 +200,7 @@ export default class EditConsultancy extends Component {
                       <div className="form-row">
                         <div className="col-md-12">
                           <div className="form-group">
-                            <label htmlFor="inputActive">Ativa</label>
+                            <label htmlFor="inputActive">Valida</label>
                             <select id="inputActive" className="form-control">
                               <option value="true">Sim</option>
                               <option value="false">Não</option>

@@ -13,7 +13,7 @@ export default class AddConsultancy extends Component {
     isLoading: false,
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
     this.setState({ isLoading: true });
@@ -38,7 +38,9 @@ export default class AddConsultancy extends Component {
       situation,
       active
     };
-    const created = postConsultancy(consultancy);
+
+    const created = await postConsultancy(consultancy);
+
     if (created) {
       this.setState({ redirect: true, isLoading: false });
     }
@@ -138,50 +140,36 @@ export default class AddConsultancy extends Component {
                         </div>
                       </div>
                     </div>
+
                     <div className="form-group">
                       <div className="form-row">
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputHiringDate"
-                              className="form-control"
-                              placeholder="Enter Hiring Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputHiringDate">
-                              Data de Contratação
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputHiringDate" className="col-6 col-form-label">Data de Contratação</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputHiringDate" required="required" />
+                            </div>
                           </div>
                         </div>
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputStartDate"
-                              className="form-control"
-                              placeholder="Enter Start Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputStartDate">
-                              Data de Início
-                            </label>
+                          <div className="form-group row">
+                            <label htmlFor="inputStartDate" className="col-6 col-form-label">Data de Início</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputStartDate" required="required" />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div className="form-group">
                       <div className="form-row">
                         <div className="col-md-6">
-                          <div className="form-label-group">
-                            <input
-                              type="text"
-                              id="inputEndDate"
-                              className="form-control"
-                              placeholder="Enter End Date"
-                              required="required"
-                            />
-                            <label htmlFor="inputEndDate">Data de Fim</label>
+                          <div className="form-group row">
+                          <label htmlFor="inputEndDate" className="col-6 col-form-label">Data de Término</label>
+                            <div className="col-10">
+                              <input className="form-control" type="datetime-local" id="inputEndDate" required="required" />
+                            </div>
                           </div>
                         </div>
                       </div>

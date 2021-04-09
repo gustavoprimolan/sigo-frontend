@@ -4,7 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import Header from "../elements/header";
 import Sidebar from "../elements/sidebar";
 import Footer from "../elements/footer";
-import { getStandards, putStandard } from "../api/standard-api";
+import { getStandard, getStandards, putStandard } from "../api/standard-api";
 
 export default class EditStandard extends Component {
   constructor(props) {
@@ -18,9 +18,10 @@ export default class EditStandard extends Component {
     isLoading: false,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const id = this.props.location.search[4];
-    this.standard = getStandards()[id - 1];
+    this.standard = await getStandard(id);
+    console.log(this.standard)
     document.getElementById("inputFile").value = this.standard.file;
     document.getElementById("inputCode").value = this.standard.code;
     document.getElementById("inputOrganization").value = this.standard.organization;
@@ -30,9 +31,10 @@ export default class EditStandard extends Component {
     document.getElementById("inputReleaseDate").value = this.standard.releaseDate;
     document.getElementById("inputValidStartDate").value = this.standard.validStartDate;
     document.getElementById("inputDescription").value = this.standard.description;
+    document.getElementById("inputValid").value = this.standard.valid ? 'true' : 'false';
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
     this.setState({ isLoading: true });
@@ -45,6 +47,7 @@ export default class EditStandard extends Component {
     const releaseDate = document.getElementById("inputReleaseDate").value;
     const validStartDate = document.getElementById("inputValidStartDate").value;
     const description = document.getElementById("inputDescription").value;
+    const valid = document.getElementById("inputValid").value == 'true' ? true : false;
 
     this.standard = {
       ...this.standard,
@@ -57,9 +60,10 @@ export default class EditStandard extends Component {
       releaseDate,
       validStartDate,
       description,
+      valid
     };
 
-    const updated = putStandard(this.standard);
+    const updated = await putStandard(this.standard);
     if (updated) {
       this.setState({ redirect: true, isLoading: false });
     }
@@ -216,6 +220,20 @@ export default class EditStandard extends Component {
                             <label htmlFor="inputValidStartDate">
                               Data de Início de Validade
                             </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <div className="form-group">
+                            <label htmlFor="inputValid">Valido</label>
+                            <select id="inputValid" className="form-control">
+                              <option value="true">Sim</option>
+                              <option value="false">Não</option>
+                            </select>
                           </div>
                         </div>
                       </div>

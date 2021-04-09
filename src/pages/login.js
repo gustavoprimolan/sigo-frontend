@@ -11,7 +11,6 @@ export default class Login extends Component {
         redirect: false,
         authError: false,
         isLoading: false,
-        location: {},
     };
 
     handleEmailChange = event => {
@@ -24,19 +23,18 @@ export default class Login extends Component {
     handleSubmit = event => {
         event.preventDefault();
         this.setState({isLoading: true});
-        const url = 'https://gowtham-rest-api-crud.herokuapp.com/login';
+        const url = 'https://tcc-puc-309309.uc.r.appspot.com/api/usuario/login';
         const email = this.state.email;
         const password = this.state.password;
-        let bodyFormData = new FormData();
-        bodyFormData.set('email', email);
-        bodyFormData.set('password', password);
-        axios.post(url, bodyFormData)
+        const requestBody = {email, senha: password};
+
+        axios.post(url, requestBody)
             .then(result => {
-                if (result.data.status) {
+                if (result.data) {
+                    localStorage.setItem('user', result.data);
                     localStorage.setItem('token', result.data.token);
-                    console.log(result.data.token);
-                    this.setState({redirect: true, isLoading: false});
                     localStorage.setItem('isLoggedIn', true);
+                    this.setState({redirect: true, isLoading: false});
                 }
             })
             .catch(error => {
@@ -45,21 +43,7 @@ export default class Login extends Component {
             });
     };
 
-    componentDidMount() {
-        const url = 'https://freegeoip.app/json/';
-        axios.get(url)
-            .then(response => {
-                const location = response.data;
-                this.setState({ location });
-            }) 
-            .catch(error => {
-                this.setState({ toDashboard: true });
-                console.log(error);
-            });
-    }
-
     renderRedirect = () => {
-        console.log(this.state.redirect);
         if (this.state.redirect) {
             console.log('redirecionou');
             return <Redirect to='/dashboard'/>

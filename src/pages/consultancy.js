@@ -18,14 +18,15 @@ export default class Consultancy extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        const consultancies = getConsultancies();
+    async componentDidMount() {
+        let consultancies = await getConsultancies();
+        consultancies = consultancies ? consultancies : [];
         this.setState({consultancies});
     }
 
-    handleClickDelete = event => {
+    handleClickDelete = async event => {
         const consultancyId = event.target.value;
-        const deleted = deleteConsultancy(consultancyId);
+        const deleted = await deleteConsultancy(consultancyId);
         if(deleted) {
             this.componentDidMount();
             this.setState({ isLoading: true});
@@ -58,7 +59,7 @@ export default class Consultancy extends Component {
                                     <table className="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Indíce</th>
                                             <th>Departamento</th>
                                             <th>Setor</th>
                                             <th>Consultoria</th>
@@ -83,21 +84,40 @@ export default class Consultancy extends Component {
                                                     <td>{consultancySituation(consultancy.situation)}</td>
                                                     <td>{consultancy.active ? 'Sim' : 'Não'}</td>
                                                     <td className="text-center">
-                                                        <Link className="btn btn-sm btn-info" to={{ pathname: 'edit-consultancy', search: '?id=' + consultancy.id }}>Visualizar</Link>
-                                                        &nbsp; | &nbsp;
-                                                        <button value={consultancy.id} className="btn btn-sm btn-danger" onClick={this.handleClickDelete} >Delete</button>
+                                                        <Link className="btn btn-info" to={{ pathname: 'edit-consultancy', search: '?id=' + consultancy.id }}>Visualizar</Link>
+                                                        <a href="#myModal" className="btn btn-danger trigger-btn" data-toggle="modal">Excluir</a>
+
+                                                        <div id="myModal" className="modal fade">
+                                                            <div className="modal-dialog modal-confirm">
+                                                                <div className="modal-content">
+                                                                    <div className="modal-header flex-column">
+                                                                        <h4 className="modal-title w-100">Você tem certeza?</h4>	
+                                                                        <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    </div>
+                                                                    <div className="modal-body">
+                                                                        <p>Você tem certeza que deseja excluir esse registro?</p>
+                                                                    </div>
+                                                                    <div className="modal-footer justify-content-center">
+                                                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                        <button value={consultancy.id} onClick={this.handleClickDelete} type="button" className="btn btn-danger" data-dismiss="modal">Excluir</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
                                                     </td>
                                                 </tr>)
                                             }
                                         </tbody>
                                     </table>
                                 </div>
-                                <div className="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                             </div>
                         </div>
                         <Footer/>
                     </div>
                 </div>
+
+                
             </div>
         );
     }
