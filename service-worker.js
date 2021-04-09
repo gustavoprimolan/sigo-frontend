@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/sigo-frontend/precache-manifest.002a9d81b7ef47718cf3e35ab4857ba3.js"
+  "/sigo-frontend/precache-manifest.807393c1ff5ceeb62d12cf804de15a27.js"
 );
 
 self.addEventListener('message', (event) => {

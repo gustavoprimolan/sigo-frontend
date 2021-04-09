@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sigo-frontend/static/css/main.bb3cb2ac.chunk.css",
-    "main.js": "/sigo-frontend/static/js/main.b864eb69.chunk.js",
-    "main.js.map": "/sigo-frontend/static/js/main.b864eb69.chunk.js.map",
+    "main.js": "/sigo-frontend/static/js/main.f8b398ce.chunk.js",
+    "main.js.map": "/sigo-frontend/static/js/main.f8b398ce.chunk.js.map",
     "runtime-main.js": "/sigo-frontend/static/js/runtime-main.bdd67d9d.js",
     "runtime-main.js.map": "/sigo-frontend/static/js/runtime-main.bdd67d9d.js.map",
     "static/js/2.5e889a2c.chunk.js": "/sigo-frontend/static/js/2.5e889a2c.chunk.js",
     "static/js/2.5e889a2c.chunk.js.map": "/sigo-frontend/static/js/2.5e889a2c.chunk.js.map",
     "index.html": "/sigo-frontend/index.html",
-    "precache-manifest.002a9d81b7ef47718cf3e35ab4857ba3.js": "/sigo-frontend/precache-manifest.002a9d81b7ef47718cf3e35ab4857ba3.js",
+    "precache-manifest.807393c1ff5ceeb62d12cf804de15a27.js": "/sigo-frontend/precache-manifest.807393c1ff5ceeb62d12cf804de15a27.js",
     "service-worker.js": "/sigo-frontend/service-worker.js",
     "static/css/main.bb3cb2ac.chunk.css.map": "/sigo-frontend/static/css/main.bb3cb2ac.chunk.css.map",
     "static/js/2.5e889a2c.chunk.js.LICENSE.txt": "/sigo-frontend/static/js/2.5e889a2c.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.bdd67d9d.js",
     "static/js/2.5e889a2c.chunk.js",
     "static/css/main.bb3cb2ac.chunk.css",
-    "static/js/main.b864eb69.chunk.js"
+    "static/js/main.f8b398ce.chunk.js"
   ]
 }
