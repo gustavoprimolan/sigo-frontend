@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a70a11ff63f4ef7684c5f52d60d421af",
+    "revision": "d2cb42429b5a90984ab0b1cabc581883",
     "url": "/sigo-frontend/index.html"
   },
   {
-    "revision": "9c7d5736903b9b55eb47",
+    "revision": "9f8e95889a3894a07b55",
     "url": "/sigo-frontend/static/css/main.bb3cb2ac.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sigo-frontend/static/js/2.5e889a2c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9c7d5736903b9b55eb47",
-    "url": "/sigo-frontend/static/js/main.35b07508.chunk.js"
+    "revision": "9f8e95889a3894a07b55",
+    "url": "/sigo-frontend/static/js/main.2703c2dd.chunk.js"
   },
   {
     "revision": "74475ba8fd65ab08b2ef",
