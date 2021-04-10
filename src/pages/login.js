@@ -30,11 +30,17 @@ export default class Login extends Component {
 
         axios.post(url, requestBody)
             .then(result => {
-                if (result.data) {
+                console.log(result);
+                if (result.status == 200) {
+                    console.log(result.data);
                     localStorage.setItem('user', result.data);
                     localStorage.setItem('token', result.data.token);
                     localStorage.setItem('isLoggedIn', true);
-                    this.setState({redirect: true, isLoading: false});
+                    localStorage.setItem('permission', result.data.perfil.nome);
+                    this.setState({redirect: true, isLoading: false, authError: false});
+                } else {
+                    console.log('Não existe usuario');
+                    this.setState({authError: true, isLoading: false});    
                 }
             })
             .catch(error => {
