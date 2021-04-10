@@ -102,6 +102,26 @@ export default class Login extends Component {
                                     )}
                                 </button>
                             </div>
+
+                            <div className="form-group">
+                                <div className="form-group">
+                                    <b>email:</b> adm@teste.com
+                                </div>
+                                <div className="form-group">
+                                    <b>senha:</b> 123456
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <div className="form-group">
+                                    <b>email:</b> cliente@teste.com
+                                </div>
+                                <div className="form-group">
+                                    <b>senha:</b> 123456
+                                </div>
+                            </div>
+
+
                         </form>
                     </div>
                 </div>
